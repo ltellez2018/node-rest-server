@@ -7,8 +7,6 @@ const _ = require('underscore');
 const app = express();
 
 // * R E Q U E S T S
-
-
 // * O B T I E N E  U S U A R I O S
 
 app.get('/usuario', function (req, res) {
