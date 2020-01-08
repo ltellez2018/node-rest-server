@@ -2,6 +2,7 @@
 
 require('./config/config');
 
+const path = require('path');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
@@ -14,6 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
  
 // parse application/json
 app.use(bodyParser.json())
+
+// * H A B I L I T A R   C A R  P E T A   P U B L I C
+app.use( express.static(path.resolve(__dirname , '../public')));
+
+
 
 // * R O U T E S
 app.use(require('./routes/index'));
