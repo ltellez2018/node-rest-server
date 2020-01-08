@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-// * Usuarios  routes
-app.use(require('./routes/usuario'));
+// * R O U T E S
+app.use(require('./routes/index'));
 
 
 // * CONECTING TO DATABASE

@@ -1,6 +1,7 @@
 // * R E Q U I R E S
 
 const Usuario = require('../models/usuario');
+const  {verficaToken,verificaAdminRole}  = require('../middlewares/autenticacion');	
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const _ = require('underscore');
@@ -9,7 +10,8 @@ const app = express();
 // * R E Q U E S T S
 // * O B T I E N E  U S U A R I O S
 
-app.get('/usuario', function (req, res) {
+app.get('/usuario', verficaToken,(req, res) => {
+
 	let desde = req.query.desde || 0;
 	desde = Number(desde);
 	let limite = req.query.limite || 5;
@@ -37,7 +39,7 @@ app.get('/usuario', function (req, res) {
 });
 
 // * C R E A  U S U A R I O S
-app.post('/usuario', function (req, res) {
+app.post('/usuario',[verficaToken,verificaAdminRole],(req, res) =>{
 	let body = req.body;
 	let usuario = new Usuario({
 		nombre: body.nombre,
@@ -63,7 +65,7 @@ app.post('/usuario', function (req, res) {
 
 
 // * A C T U A L I Z A R   U S U A R I O S
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', [verficaToken,verificaAdminRole] , (req, res) =>{
 	let id = req.params.id;
 	let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
@@ -120,7 +122,7 @@ app.put('/usuario/:id', function (req, res) {
  */
 // * B O R R A D O  L O G I C O
 
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id', [verficaToken, verificaAdminRole] , (req, res) =>{
 	let id = req.params.id;
 	let body = {
 		estado: false

@@ -4,7 +4,16 @@ process.env.PORT = process.env.PORT || 3000;
 // * E N T O R N O
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
+// * E X P I R A C I O N  D E L  T O K E N
+// * 60 segundos
+// * 60 minutos
+// * 24 horas
+// * 30 dias
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
 
+// * S E M I L L A  D E  A U T E N T I C A C I O N
+
+process.env.SEED = process.env.SEED ||'este-es-el-seed-desarrollo';
 
 // * B A S E   D E  D A T O S
 let urlDB;
