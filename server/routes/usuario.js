@@ -1,4 +1,6 @@
-// * R E Q U I R E S
+//? *************************************************************
+//? ***                 'Requires '                           ***
+//? *************************************************************
 
 const Usuario = require('../models/usuario');
 const  {verficaToken,verificaAdminRole}  = require('../middlewares/autenticacion');	
@@ -8,7 +10,10 @@ const _ = require('underscore');
 const app = express();
 
 // * R E Q U E S T S
-// * O B T I E N E  U S U A R I O S
+
+// *************************************************************
+// ***              'Get all users'                          ***
+// *************************************************************
 
 app.get('/usuario', verficaToken,(req, res) => {
 
@@ -38,7 +43,10 @@ app.get('/usuario', verficaToken,(req, res) => {
 		});
 });
 
-// * C R E A  U S U A R I O S
+
+// *************************************************************
+// ***                  'Save user'                          ***
+// *************************************************************
 app.post('/usuario',[verficaToken,verificaAdminRole],(req, res) =>{
 	let body = req.body;
 	let usuario = new Usuario({
@@ -64,7 +72,9 @@ app.post('/usuario',[verficaToken,verificaAdminRole],(req, res) =>{
 });
 
 
-// * A C T U A L I Z A R   U S U A R I O S
+// *************************************************************
+// ***                  'Update user'                        ***
+// *************************************************************
 app.put('/usuario/:id', [verficaToken,verificaAdminRole] , (req, res) =>{
 	let id = req.params.id;
 	let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
@@ -120,7 +130,10 @@ app.put('/usuario/:id', [verficaToken,verificaAdminRole] , (req, res) =>{
 	});
 });
  */
-// * B O R R A D O  L O G I C O
+
+// *************************************************************
+// ***             'Update [DELETE] user'                    ***
+// *************************************************************
 
 app.delete('/usuario/:id', [verficaToken, verificaAdminRole] , (req, res) =>{
 	let id = req.params.id;

@@ -9,7 +9,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 // * 60 minutos
 // * 24 horas
 // * 30 dias
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+process.env.CADUCIDAD_TOKEN = '48h';
 
 // * S E M I L L A  D E  A U T E N T I C A C I O N
 
